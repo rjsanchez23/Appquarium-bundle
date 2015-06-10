@@ -1,0 +1,43 @@
+form:
+    register_header: "Registro de usuario"
+    login_header: "Iniciar sesión"
+    group_name: "Nombre de grupo:"
+    name: "Nombre"
+    surname: "Apellidos"
+    username: "Nombre de usuario:"
+    username_email: "Usuario o Email"
+    email: "Email:"
+    avatar: "Avatar:"
+    current_password: "Contraseña actual:"
+    password: "Contraseña:"
+    password_confirmation: "Repita la contraseña:"
+    new_password: "Nueva contraseña:"
+    new_password_confirmation: "Repita la contraseña:"
+    forgot_password_tooltip: "Olvido su contraseña?"
+    registration_tooltip: "Registrarse"
+    newsletter_subscription: "Subscribirse a nuestra newsletter"
+    password_recovery: "Solicitiar reinicio de contraseña"
+title:
+    register: "Registro"
+    login: "Acceso"
+    change_password: "Cambio de contraseña"
+    resetting_request: "Recuperación de la contraseña"
+    claim_credentials: "Introduzca los datos siguientes:"
+    reset_password: "Restablecer contraseña"
+    profile: "Perfil"
+    edit_profile: "Edición de perfil"
+    profile_bar: "Datos de usuario"
+profile:
+    show:
+        username: Nombre de usuario
+        name: Nombre
+        surname: Apellidos
+        email: Email
+    edit:
+        submit: Actualizar usuario
+        file_tooltip: Seleccione la foto de su perfil
+    flash:
+        updated: El perfil ha sido actualizado
+resetting:
+    tooltip:
+        "Recuerde que si su cuenta esta bloqueada o no ha completado el proceso de registro, este email no se enviara, puede ponerse en contacto con el equipo de Appquarium a través de appquarium.supp@gmail.com"

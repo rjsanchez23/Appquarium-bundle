@@ -1,0 +1,28 @@
+AppquariumBundle\Entity\Newsletter:
+    type: entity
+    table: newsletter
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        createdAt:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: created_at
+    manyToMany:
+        languageCode:
+            targetEntity: Language
+            cascade: {  }
+            mappedBy: newsletter
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

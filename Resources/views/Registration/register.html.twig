@@ -1,0 +1,6 @@
+{% extends "::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}{{ 'title.register'|trans }}{% endblock %}
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}

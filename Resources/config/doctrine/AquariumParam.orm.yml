@@ -1,0 +1,46 @@
+AppquariumBundle\Entity\AquariumParam:
+    type: entity
+    repositoryClass: AppquariumBundle\Entity\AquariumParamRepository
+    table: aquarium_param
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        defaultParam:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+        solution_high:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        solution_low:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    manyToMany:
+        aquariumInhabitant:
+            targetEntity: AquariumInhabitant
+            cascade: {  }
+            mappedBy: aquariumParam
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,137 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+    {% block fos_user_content %}
+        <div class="content">
+            <div class="breadLine">
+
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('dashboard_homepage') }}">Dashboard</a> <span class="divider">></span></li>
+                    <li class="active">Editar perfil</li>
+                </ul>
+            </div>
+            <div class="workplace">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="row">
+                            <div class="page-header">
+                                <h1>{{ 'title.edit_profile'|trans }}</h1>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="head clearfix">
+                                    <div class="isw-chats"></div>
+                                    <h1>{{ 'title.profile_bar'|trans }}</h1>
+                                </div>
+                                <div class="block-fluid">
+
+                                    {{ form_start(form, {'action': path('fos_user_profile_edit'), 'method': 'POST', 'attr': {'class': 'form-horizontal fos_user_profile_edit'}}) }}
+
+                                    {{ form_errors(form) }}
+
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-3">
+                                            {{ form_label(form.name, 'form.name'|trans) }}
+                                        </div>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.name, {'attr': {'class': 'form-control',
+                                                'placeholder': 'form.name'|trans} }) }}
+                                            {% if form.name.vars.errors[0].message is defined %}
+                                                <span class="help-block">
+                                                    {{ form.name.vars.errors[0].message }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-3">
+                                            {{ form_label(form.surname, 'form.surname'|trans) }}
+                                        </div>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.surname, {'attr': {'class': 'form-control',
+                                                'placeholder': 'form.surname'|trans} }) }}
+                                            {% if form.surname.vars.errors[0].message is defined %}
+                                                <span class="help-block">
+                                                    {{ form.surname.vars.errors[0].message }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-3">
+                                            {{ form_label(form.email, 'form.email'|trans) }}
+                                        </div>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control',
+                                                'placeholder': 'form.email'|trans} }) }}
+                                            {% if form.email.vars.errors[0].message is defined %}
+                                                <span class="help-block">
+                                                    {{ form.email.vars.errors[0].message }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-3">
+                                            {{ form_label(form.username, 'form.username'|trans) }}
+                                        </div>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.username, {'attr': {'class': 'form-control',
+                                                'placeholder': 'form.username'|trans} }) }}
+                                            {% if form.username.vars.errors[0].message is defined %}
+                                                <span class="help-block">
+                                                    {{ form.username.vars.errors[0].message }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-3">
+                                            {{ form_label(form.image, 'form.avatar'|trans) }}
+                                            <img id="avatar-preview"
+                                                 src="{{ asset('assets/dashboard/img/uploads/userAvatar/' ~ app.user.avatar) }}"
+                                                 class="img-thumbnail">
+                                        </div>
+                                        <div class="col-md-9 form-group">
+                                            {{ form_widget(form.image, {'attr': {'placeholder': 'form.avatar'|trans} }) }}
+                                            {% if form.image.vars.errors[0].message is defined %}
+                                                <span class="help-block">
+                                                    {{ form.image.vars.errors[0].message }}
+                                             </span>
+                                            {% endif %}
+                                            <p class="help-block">{{ 'profile.edit.file_tooltip'|trans }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-3">
+                                            {{ form_label(form.current_password, 'form.current_password'|trans) }}
+                                        </div>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.current_password, {'attr': {'class': 'form-control',
+                                                'placeholder': 'form.current_password'|trans} }) }}
+                                            {% if form.current_password.vars.errors[0].message is defined %}
+                                                <span class="help-block">
+                                                    {{ form.current_password.vars.errors[0].message }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="row-form clearfix">
+                                            {{ form_widget(form.newsletter_subscription, {'attr': {'class': 'css-checkbox'} }) }}
+                                            {{ form_label(form.newsletter_subscription, 'form.newsletter_subscription'|trans, {'label_attr': {'class': 'css-label'} }) }}
+                                            {% if form.newsletter_subscription.vars.errors[0].message is defined %}
+                                                <span class="help-block">
+                                                    {{ form.newsletter_subscription.vars.errors[0].message }}
+                                                </span>
+                                            {% endif %}
+                                    </div>
+                                    <input class="btn-primary btn-block" type="submit" value="{{ 'profile.edit.submit'|trans }}">
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

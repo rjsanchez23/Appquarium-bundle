@@ -1,0 +1,167 @@
+<?php
+
+namespace AppquariumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Problem
+ */
+class Problem
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var \AppquariumBundle\Entity\Solution
+     */
+    private $solution;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $aquarium;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $languageCode;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aquarium = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->languageCode = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Problem
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set solution
+     *
+     * @param \AppquariumBundle\Entity\Solution $solution
+     * @return Problem
+     */
+    public function setSolution(\AppquariumBundle\Entity\Solution $solution = null)
+    {
+        $this->solution = $solution;
+
+        return $this;
+    }
+
+    /**
+     * Get solution
+     *
+     * @return \AppquariumBundle\Entity\Solution 
+     */
+    public function getSolution()
+    {
+        return $this->solution;
+    }
+
+    /**
+     * Add aquarium
+     *
+     * @param \AppquariumBundle\Entity\Aquarium $aquarium
+     * @return Problem
+     */
+    public function addAquarium(\AppquariumBundle\Entity\Aquarium $aquarium)
+    {
+        $this->aquarium[] = $aquarium;
+
+        return $this;
+    }
+
+    /**
+     * Remove aquarium
+     *
+     * @param \AppquariumBundle\Entity\Aquarium $aquarium
+     */
+    public function removeAquarium(\AppquariumBundle\Entity\Aquarium $aquarium)
+    {
+        $this->aquarium->removeElement($aquarium);
+    }
+
+    /**
+     * Get aquarium
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAquarium()
+    {
+        return $this->aquarium;
+    }
+
+    /**
+     * Add languageCode
+     *
+     * @param \AppquariumBundle\Entity\Language $languageCode
+     * @return Problem
+     */
+    public function addLanguageCode(\AppquariumBundle\Entity\Language $languageCode)
+    {
+        $this->languageCode[] = $languageCode;
+
+        return $this;
+    }
+
+    /**
+     * Remove languageCode
+     *
+     * @param \AppquariumBundle\Entity\Language $languageCode
+     */
+    public function removeLanguageCode(\AppquariumBundle\Entity\Language $languageCode)
+    {
+        $this->languageCode->removeElement($languageCode);
+    }
+
+    /**
+     * Get languageCode
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLanguageCode()
+    {
+        return $this->languageCode;
+    }
+}

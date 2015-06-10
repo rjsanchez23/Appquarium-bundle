@@ -1,0 +1,54 @@
+AppquariumBundle\Entity\ParamValueRange:
+    type: entity
+    table: param_value_range
+    indexes:
+        fk_param_value_range_aquarium1_idx:
+            columns:
+                - aquarium_id
+        fk_param_value_range_param1_idx:
+            columns:
+                - param_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        maxValue:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 4
+            comment: ''
+            column: max_value
+        minValue:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 4
+            comment: ''
+            column: min_value
+    oneToOne:
+        aquarium:
+            targetEntity: Aquarium
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aquarium_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        param:
+            targetEntity: AquariumParam
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                param_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

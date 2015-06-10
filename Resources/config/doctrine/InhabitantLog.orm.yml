@@ -1,0 +1,40 @@
+AppquariumBundle\Entity\InhabitantLog:
+    type: entity
+    table: inhabitant_log
+    indexes:
+        fk_inhabitant_log_fishes_idx:
+            columns:
+                - aquarium_inhabitant_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        createdAt:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: created_at
+        comment:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        aquariumInhabitant:
+            targetEntity: AquariumInhabitant
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aquarium_inhabitant_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,39 @@
+form:
+    register_header: "User registry"
+    login_header: "Log in"
+    group_name: "Group name:"
+    name: "Name"
+    surname: "Surname"
+    username: "Username:"
+    username_email: "Username or Email"
+    email: "Email:"
+    avatar: "Avatar:"
+    current_password: "Current password:"
+    password: "Password:"
+    password_confirmation: "Repeat password:"
+    new_password: "New password:"
+    new_password_confirmation: "Repeat new password:"
+    forgot_password_tooltip: "Forgot your password"
+    registration_tooltip: "Register"
+    newsletter_subscription: "Subscribe to our newsletter"
+    password_recovery: "Request resetting password"
+title:
+    register: "Register"
+    login: "Login"
+    change_password: "Change password"
+    resetting_request: "Password recovery"
+    claim_credentials: "Enter the following data"
+    reset_password: "Reset password"
+    profile: "Profile"
+    edit_profile: "Edit profile"
+profile:
+    show:
+        username: Username
+        name: Name
+        surname: Surname
+        email: Email
+    edit:
+        submit: Actualizar usuario
+        file_tooltip: Select profile photo
+    flash:
+        updated: El perfil ha sido actualizado

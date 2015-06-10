@@ -1,0 +1,35 @@
+AppquariumBundle\Entity\Image:
+    type: entity
+    repositoryClass: AppquariumBundle\Entity\ImageRepository
+    table: image
+    indexes:
+        fk_image_aquarium1_idx:
+            columns:
+                - aquarium_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+    manyToOne:
+        aquarium:
+            targetEntity: Aquarium
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aquarium_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

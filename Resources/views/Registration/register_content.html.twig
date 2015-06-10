@@ -1,0 +1,96 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+    {% block fos_user_content %}
+        <div class="aquarium-background"></div>
+        <div class="loginBlock">
+        <h1>{{ 'form.register_header'|trans }}</h1>
+        <div class="dr"><span></span></div>
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_user_registration_register" role="form">
+            {{ form_errors(form) }}
+            <div class="form-group{% if form.name.vars.errors[0].message is defined %} has-error{% endif %}">
+                <div class="input-group">
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control',
+                        'placeholder': 'form.name'|trans} }) }}
+                    {% if form.name.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                        {{ form.name.vars.errors[0].message }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="dr"><span></span></div>
+
+            <div class="form-group{% if form.surname.vars.errors[0].message is defined %} has-error{% endif %}">
+                <div class="input-group">
+                    {{ form_widget(form.surname, {'attr': {'class': 'form-control',
+                    'placeholder': 'form.surname'|trans} }) }}
+                    {% if form.surname.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                        {{ form.surname.vars.errors[0].message }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="dr"><span></span></div>
+
+            <div class="form-group{% if form.email.vars.errors[0].message is defined %} has-error{% endif %}">
+                <div class="input-group">
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control',
+                    'placeholder': 'form.email'|trans} }) }}
+                    {% if form.email.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                        {{ form.email.vars.errors[0].message }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="dr"><span></span></div>
+
+            <div class="form-group{% if form.username.vars.errors[0].message is defined %} has-error{% endif %}">
+                <div class="input-group">
+                    {{ form_widget(form.username, {'attr': {'class': 'form-control',
+                    'placeholder': 'form.username'|trans} }) }}
+                    {% if form.username.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                        {{ form.username.vars.errors[0].message }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="dr"><span></span></div>
+
+            <div class="form-group{% if form.plainPassword.first.vars.errors[0].message is defined %} has-error{% endif %}">
+                <div class="input-group">
+                    {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control',
+                    'placeholder': 'form.password'|trans} }) }}
+                    {% if form.plainPassword.first.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                        {{ form.plainPassword.first.vars.errors[0].message }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="dr"><span></span></div>
+
+            <div class="form-group{% if form.plainPassword.second.vars.errors[0].message is defined %} has-error{% endif %}">
+                <div class="input-group">
+                    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control',
+                    'placeholder': 'form.password_confirmation'|trans} }) }}
+                    {% if form.plainPassword.second.vars.errors[0].message is defined %}
+                        <span class="help-block">
+                        {{ form.plainPassword.second.vars.errors[0].message }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="{{ 'registration.submit'|trans }}">
+            <a class="btn btn-lg backToHome btn-block" href="/">Cancelar</a>
+        {{ form_end(form) }}
+    {% endblock %}
+{% endblock %}

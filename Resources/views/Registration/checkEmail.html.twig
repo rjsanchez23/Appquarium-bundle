@@ -1,0 +1,18 @@
+{% extends "::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+{% block fos_user_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widgetButtons">
+                <div class="bb">
+                    <a href="{{ path('dashboard_homepage') }}" class="tipb" title="Inicio">
+                        <span class="ibw-home"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-success text-center" role="alert">{{ 'registration.check_email'|trans({'%email%': user.email}) }}</div>
+{% endblock fos_user_content %}
+{% endblock %}

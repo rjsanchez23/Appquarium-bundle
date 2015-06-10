@@ -1,0 +1,156 @@
+<?php
+
+namespace AppquariumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Solution
+ */
+class Solution
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $url;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $languageCode;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->languageCode = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Solution
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Solution
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Solution
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Add languageCode
+     *
+     * @param \AppquariumBundle\Entity\Language $languageCode
+     * @return Solution
+     */
+    public function addLanguageCode(\AppquariumBundle\Entity\Language $languageCode)
+    {
+        $this->languageCode[] = $languageCode;
+
+        return $this;
+    }
+
+    /**
+     * Remove languageCode
+     *
+     * @param \AppquariumBundle\Entity\Language $languageCode
+     */
+    public function removeLanguageCode(\AppquariumBundle\Entity\Language $languageCode)
+    {
+        $this->languageCode->removeElement($languageCode);
+    }
+
+    /**
+     * Get languageCode
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLanguageCode()
+    {
+        return $this->languageCode;
+    }
+}

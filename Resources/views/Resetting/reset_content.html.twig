@@ -1,0 +1,38 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+    {% block fos_user_content %}
+        <div class="aquarium-background"></div>
+        <div class="loginBlock">
+            <h1>{{ 'resetting.request.submit'|trans }}</h1>
+            <div class="dr"><span></span></div>
+            <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_user_resetting_reset">
+                {{ form_errors(form) }}
+                <div class="form-group{% if form.plainPassword.first.vars.errors[0].message is defined %} has-error{% endif %}">
+                    {{ form_label(form.plainPassword.first, null, {'label_attr': {'class': 'col-sm-12'}}) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                        {% if form.plainPassword.first.vars.errors[0].message is defined %}
+                            <span class="help-block">
+                                {{ form.plainPassword.first.vars.errors[0].message }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="dr"><span></span></div>
+                <div class="form-group{% if form.plainPassword.second.vars.errors[0].message is defined %} has-error{% endif %}">
+                    {{ form_label(form.plainPassword.second, null, {'label_attr': {'class': 'col-sm-12'}}) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                        {% if form.plainPassword.second.vars.errors[0].message is defined %}
+                            <span class="help-block">
+                                {{ form.plainPassword.second.vars.errors[0].message }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="dr"><span></span></div>
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />
+            {{ form_end(form) }}
+            </div>
+    {% endblock %}
+{% endblock %}

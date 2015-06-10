@@ -1,0 +1,8 @@
+AppquariumBundle\Entity\Address:
+  type: embeddable
+
+  fields:
+    ip:
+      type: integer
+      nullable: false
+      unsigned: false

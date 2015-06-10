@@ -1,0 +1,7 @@
+{% extends "::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}{{ 'title.resetting_request'|trans }}{% endblock %}
+{% block header %}<h1>{{ 'title.resetting_request'|trans }}</h1>{% endblock %}
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock fos_user_content %}

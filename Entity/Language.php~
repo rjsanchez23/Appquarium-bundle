@@ -1,0 +1,217 @@
+<?php
+
+namespace AppquariumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Language
+ */
+class Language
+{
+    /**
+     * @var string
+     */
+    private $code;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $inhabitant;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $newsletter;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $problem;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $solution;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->inhabitant = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->newsletter = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->problem = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->solution = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get code
+     *
+     * @return string 
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Language
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add inhabitant
+     *
+     * @param \AppquariumBundle\Entity\Inhabitant $inhabitant
+     * @return Language
+     */
+    public function addInhabitant(\AppquariumBundle\Entity\Inhabitant $inhabitant)
+    {
+        $this->inhabitant[] = $inhabitant;
+
+        return $this;
+    }
+
+    /**
+     * Remove inhabitant
+     *
+     * @param \AppquariumBundle\Entity\Inhabitant $inhabitant
+     */
+    public function removeInhabitant(\AppquariumBundle\Entity\Inhabitant $inhabitant)
+    {
+        $this->inhabitant->removeElement($inhabitant);
+    }
+
+    /**
+     * Get inhabitant
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInhabitant()
+    {
+        return $this->inhabitant;
+    }
+
+    /**
+     * Add newsletter
+     *
+     * @param \AppquariumBundle\Entity\Newsletter $newsletter
+     * @return Language
+     */
+    public function addNewsletter(\AppquariumBundle\Entity\Newsletter $newsletter)
+    {
+        $this->newsletter[] = $newsletter;
+
+        return $this;
+    }
+
+    /**
+     * Remove newsletter
+     *
+     * @param \AppquariumBundle\Entity\Newsletter $newsletter
+     */
+    public function removeNewsletter(\AppquariumBundle\Entity\Newsletter $newsletter)
+    {
+        $this->newsletter->removeElement($newsletter);
+    }
+
+    /**
+     * Get newsletter
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    /**
+     * Add problem
+     *
+     * @param \AppquariumBundle\Entity\Problem $problem
+     * @return Language
+     */
+    public function addProblem(\AppquariumBundle\Entity\Problem $problem)
+    {
+        $this->problem[] = $problem;
+
+        return $this;
+    }
+
+    /**
+     * Remove problem
+     *
+     * @param \AppquariumBundle\Entity\Problem $problem
+     */
+    public function removeProblem(\AppquariumBundle\Entity\Problem $problem)
+    {
+        $this->problem->removeElement($problem);
+    }
+
+    /**
+     * Get problem
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProblem()
+    {
+        return $this->problem;
+    }
+
+    /**
+     * Add solution
+     *
+     * @param \AppquariumBundle\Entity\Solution $solution
+     * @return Language
+     */
+    public function addSolution(\AppquariumBundle\Entity\Solution $solution)
+    {
+        $this->solution[] = $solution;
+
+        return $this;
+    }
+
+    /**
+     * Remove solution
+     *
+     * @param \AppquariumBundle\Entity\Solution $solution
+     */
+    public function removeSolution(\AppquariumBundle\Entity\Solution $solution)
+    {
+        $this->solution->removeElement($solution);
+    }
+
+    /**
+     * Get solution
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSolution()
+    {
+        return $this->solution;
+    }
+}

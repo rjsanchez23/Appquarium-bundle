@@ -1,0 +1,100 @@
+<?php
+
+namespace AppquariumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AquariumParam
+ */
+class AquariumParam
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $aquariumInhabitant;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aquariumInhabitant = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return AquariumParam
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add aquariumInhabitant
+     *
+     * @param \AppquariumBundle\Entity\AquariumInhabitant $aquariumInhabitant
+     * @return AquariumParam
+     */
+    public function addAquariumInhabitant(\AppquariumBundle\Entity\AquariumInhabitant $aquariumInhabitant)
+    {
+        $this->aquariumInhabitant[] = $aquariumInhabitant;
+
+        return $this;
+    }
+
+    /**
+     * Remove aquariumInhabitant
+     *
+     * @param \AppquariumBundle\Entity\AquariumInhabitant $aquariumInhabitant
+     */
+    public function removeAquariumInhabitant(\AppquariumBundle\Entity\AquariumInhabitant $aquariumInhabitant)
+    {
+        $this->aquariumInhabitant->removeElement($aquariumInhabitant);
+    }
+
+    /**
+     * Get aquariumInhabitant
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAquariumInhabitant()
+    {
+        return $this->aquariumInhabitant;
+    }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="appquarium.mailer" class="AppquariumBundle\Services\Admin\AppquariumMailerService" public="true">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="collection">
+                <argument key="sender" type="collection">
+                    <argument key="email">%mailer_user%</argument>
+                    <argument key="name">%sender_name%</argument>
+                    <argument key="subject">%mailer_newsletter_subject%</argument>
+                    <argument key="private-subject">%mailer_message_subject%</argument>
+                </argument>
+            </argument>
+        </service>
+
+    </services>
+
+</container>

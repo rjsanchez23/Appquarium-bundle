@@ -1,0 +1,346 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+
+#    parameter_name: value
+
+services:
+
+     appquarium.entity.aquariumInhabitant:
+           class: AppquariumBundle\Entity\AquariumInhabitant
+
+     appquarium.aquarium.library.fileUpload:
+           class: AppquariumBundle\Aquarium\Library\Upload
+           arguments:
+              - @appquarium.aquarium.library.imageNameHasher
+
+     appquarium.aquarium.library.imageNameHasher:
+           class: AppquariumBundle\Aquarium\Library\ImageNameHasher
+
+     appquarium.aquarium.library.statisticsParser:
+           class: AppquariumBundle\Aquarium\Library\StatisticsParser
+
+     appquarium.entity.predefinedInhabitant:
+           class: AppquariumBundle\Entity\Inhabitant
+
+     appquarium.entity.aquarium:
+           class: AppquariumBundle\Entity\Aquarium
+
+     appquarium.entity.parameter:
+           class: AppquariumBundle\Entity\AquariumParam
+
+     appquarium.entity.paramRange:
+           class: AppquariumBundle\Entity\ParamValueRange
+
+     appquarium.entity.waterParamMeasure:
+           class: AppquariumBundle\Entity\WaterParamMeasure
+
+     appquarium.entity.accessory:
+            class: AppquariumBundle\Entity\Accessory
+
+     appquarium.entity.image:
+            class: AppquariumBundle\Entity\Image
+
+     appquarium.aquarium.repository.doctrineRepository:
+          class: AppquariumBundle\Aquarium\Repository\DoctrineRepository
+          arguments:
+             - @doctrine.orm.entity_manager
+
+     appquarium.controller.aquariumPost:
+         class: AppquariumBundle\Controller\Panel\AquariumPostController
+         arguments:
+           - @command_bus
+           - @service_container
+
+     appquarium.controller.reminder:
+         class: AppquariumBundle\Controller\Panel\ReminderController
+         arguments:
+            - @command_bus
+            - @service_container
+
+     appquarium.controller.gallery:
+         class: AppquariumBundle\Controller\Panel\GalleryController
+         arguments:
+            - @command_bus
+            - @service_container
+
+     appquarium.controller.imagePost:
+         class: AppquariumBundle\Controller\Panel\ImagePostController
+         arguments:
+           - @command_bus
+           - @service_container
+
+     appquarium.controller.paramMeasuresPost:
+          class: AppquariumBundle\Controller\Panel\ParamMeasuresPostController
+          arguments:
+            - @command_bus
+            - @service_container
+
+     appquarium.controller.dashboard:
+          class: AppquariumBundle\Controller\Panel\DashboardController
+          arguments:
+            - @command_bus
+            - @service_container
+
+     appquarium.controller.aquarium:
+         class: AppquariumBundle\Controller\Panel\AquariumController
+         arguments:
+           - @command_bus
+           - @service_container
+
+     appquarium.controller.homePage:
+          class: AppquariumBundle\Controller\HomePage\HomePageController
+          arguments:
+            - @service_container
+
+     appquarium.controller.calendar:
+           class: AppquariumBundle\Controller\Panel\CalendarController
+           arguments:
+             - @command_bus
+             - @service_container
+
+     appquarium.controller.accessory:
+         class: AppquariumBundle\Controller\Panel\AccessoryController
+         arguments:
+           - @command_bus
+           - @service_container
+
+     appquarium.controller.statistics:
+          class: AppquariumBundle\Controller\Panel\StatisticsController
+          arguments:
+            - @command_bus
+            - @service_container
+
+     appquarium.controller.aquariumInhabitant:
+           class: AppquariumBundle\Controller\Panel\AquariumInhabitantController
+           arguments:
+             - @command_bus
+             - @service_container
+
+     appquarium.controller.aquariumInhabitantPost:
+            class: AppquariumBundle\Controller\Panel\AquariumInhabitantPostController
+            arguments:
+              - @command_bus
+              - @service_container
+
+     post_aquarium_command_handler:
+         class: AppquariumBundle\Aquarium\Command\PostAquariumCommandHandler
+         arguments:
+               - @post_aquarium_service
+         tags:
+             - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\PostAquariumCommand }
+
+     post_measures_command_handler:
+          class: AppquariumBundle\Aquarium\Command\PostMeasuresCommandHandler
+          arguments:
+                - @post_measures_service
+          tags:
+              - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\PostMeasuresCommand }
+
+     post_aquarium_inhabitant_command_handler:
+          class: AppquariumBundle\Aquarium\Command\PostAquariumInhabitantCommandHandler
+          arguments:
+                - @post_aquarium_inhabitant_service
+          tags:
+              - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\PostAquariumInhabitantCommand }
+
+
+     post_inhabitant_log_command_handler:
+          class: AppquariumBundle\Aquarium\Command\PostInhabitantLogCommandHandler
+          arguments:
+                - @post_aquarium_inhabitant_service
+          tags:
+              - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\PostInhabitantLogCommand }
+
+
+     post_aquarium_parameters_command_handler:
+          class: AppquariumBundle\Aquarium\Command\PostParametersCommandHandler
+          arguments:
+                - @post_parameter_service
+          tags:
+              - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\PostParametersCommand }
+
+     post_images_command_handler:
+          class: AppquariumBundle\Aquarium\Command\PostImagesCommandHandler
+          arguments:
+                - @post_image_service
+          tags:
+              - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\PostImagesCommand }
+
+     post_accessory_command_handler:
+           class: AppquariumBundle\Aquarium\Command\PostAccessoryCommandHandler
+           arguments:
+                 - @post_accessory_service
+           tags:
+               - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\PostAccessoryCommand }
+
+     post_event_command_handler:
+            class: AppquariumBundle\Aquarium\Command\Calendar\PostEventCommandHandler
+            arguments:
+                  - @calendar_service
+            tags:
+                - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\Calendar\PostEventCommand }
+
+     post_aquarium_service:
+          class: AppquariumBundle\Services\AquariumPost
+          arguments:
+              - @appquarium.aquarium.repository.doctrineRepository
+              - @appquarium.entity.aquarium
+              - @appquarium.aquarium.library.fileUpload
+
+     post_measures_service:
+           class: AppquariumBundle\Services\MeasurePost
+           arguments:
+               - @appquarium.aquarium.repository.doctrineRepository
+               - @appquarium.entity.waterParamMeasure
+
+     post_accessory_service:
+            class: AppquariumBundle\Services\AccessoryPost
+            arguments:
+                - @appquarium.aquarium.repository.doctrineRepository
+                - @appquarium.entity.accessory
+
+
+     post_aquarium_inhabitant_service:
+          class: AppquariumBundle\Services\AquariumInhabitantPost
+          arguments:
+              - @appquarium.aquarium.repository.doctrineRepository
+              - @appquarium.entity.aquariumInhabitant
+              - @appquarium.aquarium.library.fileUpload
+
+
+     post_parameter_service:
+          class: AppquariumBundle\Services\ParameterPost
+          arguments:
+              - @appquarium.aquarium.repository.doctrineRepository
+              - @appquarium.entity.paramRange
+              - @appquarium.entity.parameter
+
+     post_image_service:
+          class: AppquariumBundle\Services\ImagePost
+          arguments:
+              - @appquarium.aquarium.repository.doctrineRepository
+              - @appquarium.entity.aquarium
+              - @appquarium.entity.image
+              - @appquarium.aquarium.library.fileUpload
+
+     inhabitant_log_service:
+          class: AppquariumBundle\Services\AquariumLogService
+          arguments:
+              - @appquarium.aquarium.repository.doctrineRepository
+
+     accessory_service:
+          class: AppquariumBundle\Services\AccessoryService
+          arguments:
+               - @appquarium.aquarium.repository.doctrineRepository
+
+     statistics_service:
+          class: AppquariumBundle\Services\StatisticsService
+          arguments:
+               - @service_container
+               - @appquarium.aquarium.library.statisticsParser
+
+     aquarium_service:
+          class: AppquariumBundle\Services\AquariumService
+          arguments:
+            - @appquarium.aquarium.repository.doctrineRepository
+
+     calendar_service:
+          class: AppquariumBundle\Services\CalendarService
+          arguments:
+            - @appquarium.aquarium.repository.doctrineRepository
+
+     parameter_service:
+          class: AppquariumBundle\Services\ParameterService
+          arguments:
+             - @appquarium.aquarium.repository.doctrineRepository
+
+     measures_service:
+           class: AppquariumBundle\Services\MeasuresService
+           arguments:
+              - @appquarium.aquarium.repository.doctrineRepository
+
+     aquarium_inhabitant_service:
+          class: AppquariumBundle\Services\AquariumInhabitantService
+          arguments:
+             - @appquarium.aquarium.repository.doctrineRepository
+
+     aquarium_image_service:
+           class: AppquariumBundle\Services\ImagesService
+           arguments:
+              - @appquarium.aquarium.repository.doctrineRepository
+
+     predefined_inhabitants_service:
+          class: AppquariumBundle\Services\PredefinedInhabitantsService
+          arguments:
+             - @appquarium.aquarium.repository.doctrineRepository
+
+     appquarium.admin.users.controller:
+          class: AppquariumBundle\Controller\Admin\UserAdminController
+          arguments:
+            - @command_bus
+            - @service_container
+            - @router
+
+     appquarium.admin.newsletter.controller:
+          class: AppquariumBundle\Controller\Admin\NewsletterAdminController
+          arguments:
+            - @command_bus
+            - @service_container
+
+     appquarium.admin.solutions.controller:
+          class: AppquariumBundle\Controller\Admin\ParameterSolutionsAdminController
+          arguments:
+            - @command_bus
+            - @service_container
+            - @router
+
+     appquarium.admin.service:
+          class: AppquariumBundle\Services\Admin\AdminService
+          arguments:
+            - @appquarium.aquarium.repository.doctrineRepository
+            - @cipher.service
+
+     appquarium.admin.parameters.solution.service:
+          class: AppquariumBundle\Services\Admin\ParametersSolutionService
+          public: false
+          arguments:
+            - @doctrine.orm.entity_manager
+
+     delete.admin.user_command_handler:
+         class: AppquariumBundle\Aquarium\Command\Admin\DeleteUserCommandHandler
+         arguments:
+             - @appquarium.admin.service
+         tags:
+             - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\Admin\DeleteUserCommand }
+
+     update.admin.user_command_handler:
+         class: AppquariumBundle\Aquarium\Command\Admin\UpdateUserCommandHandler
+         arguments:
+             - @appquarium.admin.service
+         tags:
+             - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\Admin\UpdateUserCommand }
+
+     store.admin.parameters.solution_command_handler:
+         class: AppquariumBundle\Aquarium\Command\Admin\UpdateSolutionParameterCommandHandler
+         arguments:
+             - @appquarium.admin.parameters.solution.service
+         tags:
+             - { name: command_handler, handles: AppquariumBundle\Aquarium\Command\Admin\UpdateSolutionParameterCommand }
+
+     login.redirection.success.handler:
+          class: AppquariumBundle\Services\LoginSuccessHandler
+          arguments:
+              - @router
+              - @security.context
+     cipher.service:
+          class: AppquariumBundle\Aquarium\Library\Cipher
+     appquarium.user.manager:
+          class: AppquariumBundle\Services\AppquariumUserManager
+          arguments:
+              - @security.encoder_factory
+              - @fos_user.util.username_canonicalizer
+              - @fos_user.util.email_canonicalizer
+              - @fos_user.entity_manager
+              - @cipher.service
+              - AppquariumBundle\Entity\User

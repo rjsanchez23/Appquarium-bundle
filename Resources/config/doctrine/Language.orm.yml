@@ -1,0 +1,54 @@
+AppquariumBundle\Entity\Language:
+    type: entity
+    table: language
+    id:
+        code:
+            type: string
+            nullable: false
+            length: 2
+            fixed: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+    manyToMany:
+        inhabitant:
+            targetEntity: Inhabitant
+            cascade: {  }
+            mappedBy: null
+            inversedBy: languageCode
+            joinTable:
+                name: inhabitant_translation
+                joinColumns:
+                    -
+                        name: language_code
+                        referencedColumnName: code
+                inverseJoinColumns:
+                    -
+                        name: inhabitant_id
+                        referencedColumnName: id
+            orderBy: null
+        newsletter:
+            targetEntity: Newsletter
+            cascade: {  }
+            mappedBy: null
+            inversedBy: languageCode
+            joinTable:
+                name: newsletter_tranlation
+                joinColumns:
+                    -
+                        name: language_code
+                        referencedColumnName: code
+                inverseJoinColumns:
+                    -
+                        name: newsletter_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

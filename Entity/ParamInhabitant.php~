@@ -1,0 +1,139 @@
+<?php
+
+namespace AppquariumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ParamInhabitant
+ */
+class ParamInhabitant
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $maxValue;
+
+    /**
+     * @var string
+     */
+    private $minValue;
+
+    /**
+     * @var \AppquariumBundle\Entity\Inhabitant
+     */
+    private $inhabitant;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return ParamInhabitant
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set maxValue
+     *
+     * @param string $maxValue
+     * @return ParamInhabitant
+     */
+    public function setMaxValue($maxValue)
+    {
+        $this->maxValue = $maxValue;
+
+        return $this;
+    }
+
+    /**
+     * Get maxValue
+     *
+     * @return string 
+     */
+    public function getMaxValue()
+    {
+        return $this->maxValue;
+    }
+
+    /**
+     * Set minValue
+     *
+     * @param string $minValue
+     * @return ParamInhabitant
+     */
+    public function setMinValue($minValue)
+    {
+        $this->minValue = $minValue;
+
+        return $this;
+    }
+
+    /**
+     * Get minValue
+     *
+     * @return string 
+     */
+    public function getMinValue()
+    {
+        return $this->minValue;
+    }
+
+    /**
+     * Set inhabitant
+     *
+     * @param \AppquariumBundle\Entity\Inhabitant $inhabitant
+     * @return ParamInhabitant
+     */
+    public function setInhabitant(\AppquariumBundle\Entity\Inhabitant $inhabitant = null)
+    {
+        $this->inhabitant = $inhabitant;
+
+        return $this;
+    }
+
+    /**
+     * Get inhabitant
+     *
+     * @return \AppquariumBundle\Entity\Inhabitant 
+     */
+    public function getInhabitant()
+    {
+        return $this->inhabitant;
+    }
+}

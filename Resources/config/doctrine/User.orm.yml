@@ -1,0 +1,43 @@
+AppquariumBundle\Entity\User:
+
+    type:  entity
+    table: user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        surname:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        ip:
+            type: string
+            nullable: false
+            length: 255
+        newsletterSubscription:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+            column: newsletter_subscription
+        avatar:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+
+    lifecycleCallbacks:
+        prePersist:  [preUpload, setIp]
+        preUpdate:   [preUpload]
+        postPersist: [upload]
+        postUpdate:  [upload]
+        postRemove:  [removeUpload]
+

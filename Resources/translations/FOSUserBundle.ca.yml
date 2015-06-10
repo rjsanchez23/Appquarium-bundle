@@ -1,0 +1,39 @@
+form:
+    register_header: "Registre de usuari"
+    login_header: "Iniciar sessió"
+    group_name: "Nom del grup:"
+    name: "Nom"
+    surname: "Cognoms"
+    username: "Nom d'usuari:"
+    username_email: "Usuari o Email"
+    email: "Correu electrònic:"
+    avatar: "Avatar:"
+    current_password: "Contrasenya actual:"
+    password: "Contrasenya:"
+    password_confirmation: "Verificació:"
+    new_password: "Nova contrasenya:"
+    new_password_confirmation: "Verificació:"
+    forgot_password_tooltip: "Ha oblidat la seva contrasenya?"
+    registration_tooltip: "Registrarse"
+    newsletter_subscription: "Subscriure's a la nostre newsletter"
+    password_recovery: "sol·licitar el reinici de contrasenya"
+title:
+    register_title: "Registre"
+    login_title: "Accés"
+    change_password: "Modificar contrasenya"
+    resetting_request: "Recuperació de la contrasenya"
+    claim_credentials: "Introdueixi les següents dades"
+    reset_password: "Restablecer contrasenya"
+    profile: "Perfil"
+    edit_profile: "Edició de perfil"
+profile:
+    show:
+        username: Nombre de usuario
+        name: Nom
+        surname: Cognoms
+        email: Email
+    edit:
+        submit: Actualizar usuario
+        file_tooltip: Seleccioneu la foto del seu perfil
+    flash:
+        updated: El perfil ha sido actualizado

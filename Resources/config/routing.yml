@@ -1,0 +1,144 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+appquarium_homepage:
+    path:     /
+    defaults: { _controller: appquarium.controller.homePage:indexAction }
+    methods:  [GET]
+
+dashboard_homepage:
+    path:     aquarium/dashboard/
+    defaults: { _controller: appquarium.controller.dashboard:dashboardAction }
+    methods:  [GET]
+
+aquarium_details:
+    path:     aquarium/profile/{aquariumID}
+    defaults: { _controller: appquarium.controller.aquarium:aquariumDetailsAction }
+    methods:  [GET]
+
+aquarium_form:
+    path:     aquarium/new
+    defaults: { _controller: appquarium.controller.aquariumPost:newAquariumFormAction }
+    methods:  [GET]
+
+post_aquarium:
+    path:     aquarium/post
+    defaults: { _controller: appquarium.controller.aquariumPost:storeAction }
+    methods:  [POST]
+
+edit_post_aquarium:
+    path:     aquarium/edit/{aquariumId}
+    defaults: { _controller: appquarium.controller.aquariumPost:editAction }
+    methods:  [POST]
+
+edit_aquarium:
+    path:     aquarium/edit/{aquariumId}
+    defaults: { _controller: appquarium.controller.aquariumPost:editAquariumFormAction }
+    methods:  [GET]
+
+gallery:
+    path:     /aquarium/gallery/{aquariumId}
+    defaults: { _controller: appquarium.controller.gallery:galleryAction }
+    methods:  [GET]
+
+gallery_manager:
+    path:     /aquarium/galleryManager/{aquariumId}
+    defaults: { _controller: appquarium.controller.gallery:galleryUploadAction }
+    methods:  [GET]
+
+uploadImage:
+    path:     uploadImage/{aquariumId}
+    defaults: { _controller: appquarium.controller.imagePost:uploadImage }
+
+deleteImages:
+    path:     deleteImages
+    defaults: { _controller: appquarium.controller.imagePost:deleteImages }
+    methods:  [POST]
+
+delete_aquarium:
+    path:     aquarium/delete/{aquariumId}
+    defaults: { _controller: appquarium.controller.aquarium:deleteAquariumAction }
+    methods:  [POST]
+
+statistics:
+    path:     /aquarium/statistics/{aquariumId}
+    defaults: { _controller: appquarium.controller.statistics:statisticsAction }
+    methods:  [GET]
+
+post_param_measure:
+    path:     /param/measure/{idAquarium}
+    defaults: { _controller: appquarium.controller.paramMeasuresPost:storeAction }
+    methods:  [POST]
+
+show_inhabitant_form:
+    path: /inhabitant/new/{idAquarium}
+    defaults: { _controller: appquarium.controller.aquariumInhabitant:newAquariumInhabitantFormAction }
+    methods: [GET]
+
+inhabitant_file:
+    path: /inhabitant/profile/{inhabitantId}
+    defaults: {_controller: appquarium.controller.aquariumInhabitant:showInhabitantFileAction}
+    methods: [GET]
+
+edit_inhabitant_file:
+    path: /inhabitant/edit/{inhabitantId}
+    defaults: { _controller: appquarium.controller.aquariumInhabitant:editInhabitantFormAction }
+    methods: [GET]
+
+post_inhabitant:
+    path: /postInhabitant/{idAquarium}
+    defaults: { _controller:appquarium.controller.aquariumInhabitantPost:storeAction}
+    methods: [POST]
+
+edit_inhabitant:
+    path: /editInhabitant/{idInhabitant}
+    defaults: { _controller:appquarium.controller.aquariumInhabitantPost:editAction}
+    methods: [POST]
+
+delete_inhabitant:
+    path: /inhabitant/delete/{idInhabitant}
+    defaults: { _controller: appquarium.controller.aquariumInhabitant:deleteAction}
+    methods: [POST]
+
+delete_list_inhabitant:
+    path: /inhabitant/deleteList/{idInhabitant}
+    defaults: { _controller: appquarium.controller.aquariumInhabitant:deleteFromListAction}
+    methods: [POST]
+
+delete_accessory:
+    path: /accessory/delete/{idAccessory}
+    defaults: { _controller: appquarium.controller.accessory:deleteAccessory}
+    methods: [POST]
+
+new_blog_post:
+    path: /inhabitant/blog/new/{inhabitantId}
+    defaults: {_controller: appquarium.controller.aquariumInhabitantPost:newBlogPostStoreAction }
+    methods: [POST]
+
+delete_blog_post:
+    path: /inhabitant/blog/delete/{blogPostId}
+    defaults: {_controller: appquarium.controller.aquariumInhabitant:deleteBlogPostAction }
+
+ajax_statistics_action:
+    path: /aquarium/statistics
+    defaults: { _controller: appquarium.controller.statistics:ajaxStatisticsAction }
+    methods: [POST]
+
+accessory_new:
+    path: /accessory/new/{idAquarium}
+    defaults: { _controller: appquarium.controller.accessory:storeAction }
+    methods: [POST]
+
+aquarium_calendar:
+    path: /aquarium/calendar/{idAquarium}
+    defaults: { _controller: appquarium.controller.calendar:calendarAction }
+    methods: [GET]
+
+aquarium_calendar_events:
+    path: /aquarium/calendar/events/{idAquarium}
+    defaults: { _controller: appquarium.controller.calendar:postEventCalendarAction }
+    methods: [POST]
+
+remove_calendar_events:
+    path: /aquarium/calendar/remove/{idEvent}
+    defaults: { _controller: appquarium.controller.calendar:removeEventCalendarAction }
+    methods: [POST]

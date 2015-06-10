@@ -1,0 +1,7 @@
+{% extends "::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}{{ 'title.profile'|trans }}{% endblock %}
+{% block header %}<h1>{{ 'title.profile'|trans }}</h1>{% endblock %}
+{% block fos_user_content %}
+{% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% endblock fos_user_content %}

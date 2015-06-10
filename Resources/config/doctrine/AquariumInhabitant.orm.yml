@@ -1,0 +1,96 @@
+AppquariumBundle\Entity\AquariumInhabitant:
+    type: entity
+    table: aquarium_inhabitant
+    indexes:
+        fk_fishes_aquariums1_idx:
+            columns:
+                - aquarium_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        avatar:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        alias:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        createdAt:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: created_at
+        updatedAt:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: updated_at
+        family:
+            type: string
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        scientificName:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: scientific_name
+        price:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            comment: ''
+        foodType:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: food_type
+        feedTime:
+            type: integer
+            nullable: true
+            unsigned: true
+            comment: ''
+            column: feed_time
+        number:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            default: '1'
+        description:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        aquarium:
+            targetEntity: Aquarium
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aquarium_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

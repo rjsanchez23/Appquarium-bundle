@@ -1,0 +1,240 @@
+<?php
+
+namespace AppquariumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Inhabitant
+ */
+class Inhabitant
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $avatar;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $scientificName;
+
+    /**
+     * @var integer
+     */
+    private $createdAt;
+
+    /**
+     * @var integer
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     */
+    private $family;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $languageCode;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->languageCode = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param string $avatar
+     * @return Inhabitant
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return string 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Inhabitant
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set scientificName
+     *
+     * @param string $scientificName
+     * @return Inhabitant
+     */
+    public function setScientificName($scientificName)
+    {
+        $this->scientificName = $scientificName;
+
+        return $this;
+    }
+
+    /**
+     * Get scientificName
+     *
+     * @return string 
+     */
+    public function getScientificName()
+    {
+        return $this->scientificName;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param integer $createdAt
+     * @return Inhabitant
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return integer 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param integer $updatedAt
+     * @return Inhabitant
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return integer 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set family
+     *
+     * @param string $family
+     * @return Inhabitant
+     */
+    public function setFamily($family)
+    {
+        $this->family = $family;
+
+        return $this;
+    }
+
+    /**
+     * Get family
+     *
+     * @return string 
+     */
+    public function getFamily()
+    {
+        return $this->family;
+    }
+
+    /**
+     * Add languageCode
+     *
+     * @param \AppquariumBundle\Entity\Language $languageCode
+     * @return Inhabitant
+     */
+    public function addLanguageCode(\AppquariumBundle\Entity\Language $languageCode)
+    {
+        $this->languageCode[] = $languageCode;
+
+        return $this;
+    }
+
+    /**
+     * Remove languageCode
+     *
+     * @param \AppquariumBundle\Entity\Language $languageCode
+     */
+    public function removeLanguageCode(\AppquariumBundle\Entity\Language $languageCode)
+    {
+        $this->languageCode->removeElement($languageCode);
+    }
+
+    /**
+     * Get languageCode
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLanguageCode()
+    {
+        return $this->languageCode;
+    }
+}

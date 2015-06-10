@@ -1,0 +1,36 @@
+AppquariumBundle\Entity\User:
+    properties:
+        name:
+            - NotBlank: { groups: [registration, profile]}
+            - Length: { min: 2, max: 255, groups: ["appquarium_registration", "appquarium_profile"] }
+        surname:
+            - NotBlank: { groups: [registration, profile]}
+            - Length: { min: 2, max: 255, groups: ["appquarium_registration", "appquarium_profile"] }
+        email:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: [ "appquarium_registration", "appquarium_profile" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.email.short
+                max: 255
+                maxMessage: fos_user.email.long
+                groups: [ "appquarium_registration", "appquarium_profile" ]
+        plainPassword:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: [ "appquarium_registration", "ResetPassword", "ChangePassword" ]
+            - Length:
+                min: 2
+                max: 4096
+                minMessage: fos_user.password.short
+                groups: [ "appquarium_registration", "appquarium_profile", "ResetPassword", "ChangePassword"]
+        image:
+            - Image:
+                minWidth: 200
+                maxWidth: 400
+                minHeight: 200
+                maxHeight: 400
+                mimeTypes: [image/png, image/jpeg]
+                mimeTypesMessage: "Invalid image extension, supported extensions: jpg or png"
+                groups: [ "appquarium_profile" ]

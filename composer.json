@@ -1,0 +1,23 @@
+{
+    "name": "AppquariumTeam/Appquarium",
+    "description": "MPWAR TFM 2015",
+    "license": "MIT",
+    "keyworkds": [],
+    "homepage": "https://github.com/envyj020/Appquarium",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Appquarium Team",
+            "email": "appquarium.supp@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "simple-bus/symfony-bridge": "~3.0"
+
+    },
+    "autoload" : {
+        "psr-4": {"AppquariumBundle\\": ""}
+    }
+}

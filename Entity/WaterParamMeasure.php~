@@ -1,0 +1,139 @@
+<?php
+
+namespace AppquariumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * WaterParamMeasure
+ */
+class WaterParamMeasure
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $value;
+
+    /**
+     * @var integer
+     */
+    private $date;
+
+    /**
+     * @var \AppquariumBundle\Entity\Aquarium
+     */
+    private $aquarium;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return WaterParamMeasure
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set date
+     *
+     * @param integer $date
+     * @return WaterParamMeasure
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return integer 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set aquarium
+     *
+     * @param \AppquariumBundle\Entity\Aquarium $aquarium
+     * @return WaterParamMeasure
+     */
+    public function setAquarium(\AppquariumBundle\Entity\Aquarium $aquarium = null)
+    {
+        $this->aquarium = $aquarium;
+
+        return $this;
+    }
+
+    /**
+     * Get aquarium
+     *
+     * @return \AppquariumBundle\Entity\Aquarium 
+     */
+    public function getAquarium()
+    {
+        return $this->aquarium;
+    }
+    /**
+     * @var \AppquariumBundle\Entity\AquariumParam
+     */
+    private $aquariumParam;
+
+
+    /**
+     * Set aquariumParam
+     *
+     * @param \AppquariumBundle\Entity\AquariumParam $aquariumParam
+     * @return WaterParamMeasure
+     */
+    public function setAquariumParam(\AppquariumBundle\Entity\AquariumParam $aquariumParam = null)
+    {
+        $this->aquariumParam = $aquariumParam;
+
+        return $this;
+    }
+
+    /**
+     * Get aquariumParam
+     *
+     * @return \AppquariumBundle\Entity\AquariumParam 
+     */
+    public function getAquariumParam()
+    {
+        return $this->aquariumParam;
+    }
+}

@@ -1,0 +1,6 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{{ 'title.edit_profile'|trans }}{% endblock %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+{% endblock fos_user_content %}

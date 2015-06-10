@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+    {% block fos_user_content %}
+        <div class="aquarium-background"></div>
+        <div class="loginBlock" id="fos_user_registration_form">
+        <h1>{{ 'resetting.request.submit'|trans }}</h1>
+        <div class="dr"><span></span></div>
+            <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-horizontal fos_user_resetting_request">
+                <div class="form-group">
+                    {% if invalid_username is defined %}
+                        <span class="help-block">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</span>
+                    {% endif %}
+                    <div class="input-group">
+                        <input class="form-control" type="text" id="username" name="username" placeholder="{{ 'form.username_email'|trans }}" required="required" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="btn btn-lg btn-primary btn-block" type="submit" value="{{ 'form.password_recovery'|trans }}" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% endblock %}
+{% endblock %}

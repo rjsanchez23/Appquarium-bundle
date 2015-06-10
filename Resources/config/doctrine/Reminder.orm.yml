@@ -1,0 +1,52 @@
+AppquariumBundle\Entity\Reminder:
+    type: entity
+    table: reminder
+    indexes:
+        fk_reminder_aquarium_maintenance1_idx:
+            columns:
+                - aquarium_maintenance_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        description:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        createdAt:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: created_at
+        reminderDate:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: reminder_date
+    manyToOne:
+        aquariumMaintenance:
+            targetEntity: AquariumMaintenance
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aquarium_maintenance_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

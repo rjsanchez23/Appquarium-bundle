@@ -1,0 +1,7 @@
+{% extends "::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}{{ 'title.reset_password'|trans }}{% endblock %}
+{% block header %}<h1>{{ 'title.reset_password'|trans }}</h1>{% endblock %}
+{% block fos_user_content %}
+    {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+{% endblock fos_user_content %}

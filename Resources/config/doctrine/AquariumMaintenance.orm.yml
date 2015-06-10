@@ -1,0 +1,75 @@
+AppquariumBundle\Entity\AquariumMaintenance:
+    type: entity
+    repositoryClass: AppquariumBundle\Entity\AquariumMaintenanceRepository
+    table: aquarium_maintenance
+    indexes:
+        fk_aquarium_maintenance_aquariums1_idx:
+            columns:
+                - aquarium_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        maintenanceDate:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: maintenance_date
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        comment:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        done:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+        periodicMaintenance:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+            column: periodic_maintenance
+        period:
+            type: integer
+            nullable: true
+            unsigned: true
+            comment: ''
+        createdAt:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: created_at
+        updatedAt:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: updated_at
+    manyToOne:
+        aquarium:
+            targetEntity: Aquarium
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                aquarium_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
