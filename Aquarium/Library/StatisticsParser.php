@@ -4,7 +4,7 @@
 namespace AppquariumBundle\Aquarium\Library;
 
 
-class StatisticsParser
+class StatisticsParser implements StatisticsParserInterface
 {
 
 

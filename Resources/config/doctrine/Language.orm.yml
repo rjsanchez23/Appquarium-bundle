@@ -19,22 +19,6 @@ AppquariumBundle\Entity\Language:
             fixed: false
             comment: ''
     manyToMany:
-        inhabitant:
-            targetEntity: Inhabitant
-            cascade: {  }
-            mappedBy: null
-            inversedBy: languageCode
-            joinTable:
-                name: inhabitant_translation
-                joinColumns:
-                    -
-                        name: language_code
-                        referencedColumnName: code
-                inverseJoinColumns:
-                    -
-                        name: inhabitant_id
-                        referencedColumnName: id
-            orderBy: null
         newsletter:
             targetEntity: Newsletter
             cascade: {  }

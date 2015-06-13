@@ -12,9 +12,12 @@
             </div>
         </div>
     </div>
-    <div class="alert alert-success text-center" role="alert">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</div>
-    {% if app.session is not empty %}
-        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-    {% endif %}
+    <div class="alert alert-success text-center" role="alert">
+        {{ 'registration.confirmed'|trans({'%username%': user.username}) }}
+        {% if app.session is not empty %}
+            {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+            {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+        {% endif %}
+    </div>
+
 {% endblock fos_user_content %}

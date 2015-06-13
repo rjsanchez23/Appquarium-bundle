@@ -22,11 +22,6 @@ class Language
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $inhabitant;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $newsletter;
 
 
@@ -35,7 +30,6 @@ class Language
      */
     public function __construct()
     {
-        $this->inhabitant = new \Doctrine\Common\Collections\ArrayCollection();
         $this->newsletter = new \Doctrine\Common\Collections\ArrayCollection();
 
     }
@@ -71,39 +65,6 @@ class Language
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Add inhabitant
-     *
-     * @param \AppquariumBundle\Entity\Inhabitant $inhabitant
-     * @return Language
-     */
-    public function addInhabitant(\AppquariumBundle\Entity\Inhabitant $inhabitant)
-    {
-        $this->inhabitant[] = $inhabitant;
-
-        return $this;
-    }
-
-    /**
-     * Remove inhabitant
-     *
-     * @param \AppquariumBundle\Entity\Inhabitant $inhabitant
-     */
-    public function removeInhabitant(\AppquariumBundle\Entity\Inhabitant $inhabitant)
-    {
-        $this->inhabitant->removeElement($inhabitant);
-    }
-
-    /**
-     * Get inhabitant
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInhabitant()
-    {
-        return $this->inhabitant;
     }
 
     /**

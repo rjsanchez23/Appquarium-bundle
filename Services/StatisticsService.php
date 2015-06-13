@@ -2,7 +2,7 @@
 namespace AppquariumBundle\Services;
 
 
-use AppquariumBundle\Aquarium\Library\StatisticsParser;
+use AppquariumBundle\Aquarium\Library\StatisticsParserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
 
 class StatisticsService
@@ -11,9 +11,8 @@ class StatisticsService
     private $container;
     private $statisticsParser;
 
-    public function __construct(Container $container, StatisticsParser $statisticsParser)
+    public function __construct(Container $container, StatisticsParserInterface $statisticsParser)
     {
-
         $this->container = $container;
         $this->statisticsParser = $statisticsParser;
     }
@@ -24,7 +23,6 @@ class StatisticsService
         $measuresService = $this->container->get('measures_service');
         $measures = $measuresService->historyMeasures($valueRangeId, $period);
         $measures = $this->measuresDateValueArrayFormat($measures);
-
         return $this->statisticsParser->measuresAllDaysPeriodBack($period, $measures);
 
     }

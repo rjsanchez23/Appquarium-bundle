@@ -30,33 +30,27 @@ class ParamMeasuresPostController extends CustomBaseController
 
 
         $result = [];
+        $measuresDate = 0;
         foreach ($measuresRequest as $measures)
         {
-
+            if (($measures->name) != "measureDate") {
                 $result[$measures->name] = (new Decimal($measures->value))->value();
-
+            } else {
+               $measuresDate = $measures->value;
+            }
         }
-        $measuresDate = $this->measureDate($result);
 
-         $command = new PostMeasuresCommand($result, $measuresDate, $idAquarium);
-         $this->commandBus->handle($command);
+        $command = new PostMeasuresCommand($result, $measuresDate, $idAquarium);
+        $this->commandBus->handle($command);
 
         $measuresService = $this->get('measures_service');
         $measures = $measuresService->LastAquariumMeasures($idAquarium);
+
 
         return new Response(json_encode($measures));
 
 
 
     }
-
-    private function measureDate(&$arrayForm)
-    {
-
-        $measuresDate = $arrayForm["measureDate"];
-        unset($arrayForm["measureDate"]);
-        return $measuresDate;
-    }
-
 
 }

@@ -21,7 +21,7 @@ class Decimal {
     public function validate($decimal)
     {
 
-        if (!filter_var($decimal,FILTER_VALIDATE_FLOAT) && !filter_var($decimal, FILTER_VALIDATE_INT))
+        if (!filter_var($decimal, FILTER_VALIDATE_FLOAT) && !filter_var($decimal, FILTER_VALIDATE_INT))
         {
             $this->value = 0;
         }

@@ -6,6 +6,7 @@ namespace AppquariumBundle\Controller\Panel;
 use AppquariumBundle\Aquarium\Command\PostAccessoryCommand;
 use AppquariumBundle\Aquarium\ValueObjects\Decimal;
 use AppquariumBundle\Aquarium\ValueObjects\Name;
+use AppquariumBundle\Aquarium\ValueObjects\String;
 use AppquariumBundle\Controller\CustomBaseController;
 use SimpleBus\Message\Bus\MessageBus;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
@@ -44,7 +45,7 @@ class AccessoryController extends CustomBaseController
 
     private function accessoryData(Request $request){
         $accessoryData = [];
-        $accessoryData["name"] = (new Name($request->request->get("name")))->value();
+        $accessoryData["name"] = (new String($request->request->get("name")))->value();
         $accessoryData["date"] = $request->request->get("date");
         $accessoryData["price"] = (new Decimal($request->request->get("price")))->value();
 

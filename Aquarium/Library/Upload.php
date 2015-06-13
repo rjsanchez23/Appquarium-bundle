@@ -16,7 +16,7 @@ class Upload {
     private $uploadPath;
     private $imageNameHasher;
 
-    public function __construct(ImageNameHasher $imageNameHasher){
+    public function __construct(ImageNameHasherInterface $imageNameHasher){
 
         $this->imageNameHasher = $imageNameHasher;
     }
@@ -32,21 +32,16 @@ class Upload {
 
     public function upload(Array $file, $uploadDir = null){
 
-
         if(is_null($uploadDir)){
             $uploadDir = mkdir("uploads/", 0700);
         }
-
         $this->__invoke($file, $uploadDir);
-
         $full_path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . $this->uploadPath . $this->name;
-
         $status = move_uploaded_file($this->tmp_name, $full_path);
 
         if (!$status) {
             throw new Exception('Upload: No ha sido posible subir la imagen.');
         }
-
         return $this->name;
 
     }

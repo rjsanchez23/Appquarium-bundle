@@ -27,7 +27,8 @@ class DoctrineRepository implements EntityRepositoryInterface
         $this->entityManager->flush();
     }
 
-    public function remove($entity){
+    public function remove($entity)
+    {
         $this->entityManager->remove($entity);
         $this->entityManager->flush();
     }

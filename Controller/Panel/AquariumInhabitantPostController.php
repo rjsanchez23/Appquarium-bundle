@@ -9,6 +9,7 @@ use AppquariumBundle\Aquarium\ValueObjects\Description;
 use AppquariumBundle\Aquarium\ValueObjects\Family;
 use AppquariumBundle\Aquarium\ValueObjects\Integer;
 use AppquariumBundle\Aquarium\ValueObjects\Name;
+use AppquariumBundle\Aquarium\ValueObjects\String;
 use AppquariumBundle\Controller\AvatarTrait;
 use AppquariumBundle\Controller\CustomBaseController;
 use SimpleBus\Message\Bus\MessageBus;
@@ -82,14 +83,14 @@ class AquariumInhabitantPostController extends CustomBaseController
 
 
         $inhabitantData["id"] = $idInhabitant;
-        $inhabitantData["alias"] = (new Name($request->request->get("alias")))->value();
-        $inhabitantData["scientificName"] = (new Name($request->request->get("scientificName")))->value();
-        $inhabitantData["family"] = (new Family($request->request->get("family")))->value();
-        $inhabitantData["price"] = (new Decimal($request->request->get("price")))->value();
-        $inhabitantData["feedTime"] = (new Integer($request->request->get("feedTime")))->value();
-        $inhabitantData["foodType"] = (new Name($request->request->get("foodType")))->value();
-        $inhabitantData["number"] = (new Integer($request->request->get("number")))->value();
-        $inhabitantData["description"] = (new Description($request->request->get("description")))->value();
+        $inhabitantData["alias"] = (new String(strip_tags($request->request->get("alias"))))->value();
+        $inhabitantData["scientificName"] = (new String(strip_tags($request->request->get("scientificName"))))->value();
+        $inhabitantData["family"] = (new Family(strip_tags($request->request->get("family"))))->value();
+        $inhabitantData["price"] = (new Decimal(strip_tags($request->request->get("price"))))->value();
+        $inhabitantData["feedTime"] = (new Integer(strip_tags($request->request->get("feedTime"))))->value();
+        $inhabitantData["foodType"] = (new String(strip_tags($request->request->get("foodType"))))->value();
+        $inhabitantData["number"] = (new Integer(strip_tags($request->request->get("number"))))->value();
+        $inhabitantData["description"] = (strip_tags($request->request->get("description")));
         $inhabitantData["aquariumId"] = $idAquarium;
 
         $command = new PostAquariumInhabitantCommand($inhabitantData, $avatarData);

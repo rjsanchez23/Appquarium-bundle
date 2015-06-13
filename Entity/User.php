@@ -22,7 +22,6 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->newsletterSubscription = false;
-        $this->avatar = 'default.jpg';
     }
 
     public function getImage()
@@ -34,8 +33,8 @@ class User extends BaseUser
     {
         $this->image = $file;
 
-        if (isset($this->avatar) && $this->avatar != 'default.jpg') {
-            $this->tempImage = $this->avatar;
+        if (isset($this->avatar)) {
+            $this->tempImage = $this->getAvatar();
             $this->avatar = null;
         } else {
             $this->avatar = 'default.jpg';
@@ -72,9 +71,9 @@ class User extends BaseUser
             : $this->getUploadRootDir().'/'.$this->avatar;
     }
 
-    protected function getUploadRootDir()
+    public function getUploadRootDir()
     {
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+        return $_SERVER['DOCUMENT_ROOT'] . '/' . $this->getUploadDir();
     }
 
     protected function getUploadDir()
@@ -93,6 +92,9 @@ class User extends BaseUser
         {
             $filename = sha1(uniqid(mt_rand(), true));
             $this->setAvatar( $filename . '.' . $this->getImage()->guessExtension());
+        } else
+        {
+            $this->setAvatar('default.jpg');
         }
     }
 

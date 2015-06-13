@@ -4,7 +4,7 @@
 namespace AppquariumBundle\Aquarium\Library;
 
 
-class ImageNameHasher
+class ImageNameHasher implements ImageNameHasherInterface
 {
     public function hash($name)
     {

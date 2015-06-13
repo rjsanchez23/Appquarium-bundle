@@ -8,7 +8,7 @@ use AppquariumBundle\Aquarium\Command\PostParametersCommand;
 use AppquariumBundle\Aquarium\ValueObjects\Decimal;
 use AppquariumBundle\Aquarium\ValueObjects\Description;
 use AppquariumBundle\Aquarium\ValueObjects\Integer;
-use AppquariumBundle\Aquarium\ValueObjects\Name;
+use AppquariumBundle\Aquarium\ValueObjects\String;
 use AppquariumBundle\Aquarium\ValueObjects\WaterType;
 use AppquariumBundle\Controller\AvatarTrait;
 use AppquariumBundle\Controller\CustomBaseController;
@@ -91,10 +91,10 @@ class AquariumPostController extends CustomBaseController
     {
 
         $aquariumData = [];
-        $aquariumData ["alias"] = (new Name(strip_tags($request->request->get("alias"))))->value();
+        $aquariumData ["alias"] = (new String(strip_tags($request->request->get("alias"))))->value();
         $aquariumData ["capacity"] = (new Integer($request->request->get("capacity")))->value();
         $aquariumData ["water"] = (new WaterType(strip_tags($request->request->get("water"))))->value();
-        $aquariumData ["description"] = (new Description(strip_tags($request->request->get("description"))))->value();
+        $aquariumData ["description"] = (strip_tags($request->request->get("description")));
 
         return $aquariumData;
     }
