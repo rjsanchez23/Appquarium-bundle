@@ -20,9 +20,6 @@ services:
      appquarium.aquarium.library.statisticsParser:
            class: AppquariumBundle\Aquarium\Library\StatisticsParser
 
-     appquarium.entity.predefinedInhabitant:
-           class: AppquariumBundle\Entity\Inhabitant
-
      appquarium.entity.aquarium:
            class: AppquariumBundle\Entity\Aquarium
 
