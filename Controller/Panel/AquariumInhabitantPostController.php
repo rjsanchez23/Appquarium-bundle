@@ -90,7 +90,7 @@ class AquariumInhabitantPostController extends CustomBaseController
         $inhabitantData["feedTime"] = (new Integer(strip_tags($request->request->get("feedTime"))))->value();
         $inhabitantData["foodType"] = strip_tags($request->request->get("foodType"))->value();
         $inhabitantData["number"] = (new Integer(strip_tags($request->request->get("number"))))->value();
-        $inhabitantData["description"] = (strip_tags($request->request->get("description")));
+        $inhabitantData["description"] = strip_tags($request->request->get("description"));
         $inhabitantData["aquariumId"] = $idAquarium;
 
         $command = new PostAquariumInhabitantCommand($inhabitantData, $avatarData);
