@@ -84,11 +84,11 @@ class AquariumInhabitantPostController extends CustomBaseController
 
         $inhabitantData["id"] = $idInhabitant;
         $inhabitantData["alias"] = (new String(strip_tags($request->request->get("alias"))))->value();
-        $inhabitantData["scientificName"] = strip_tags($request->request->get("scientificName"))->value();
+        $inhabitantData["scientificName"] = strip_tags($request->request->get("scientificName"));
         $inhabitantData["family"] = (new Family(strip_tags($request->request->get("family"))))->value();
         $inhabitantData["price"] = (new Decimal(strip_tags($request->request->get("price"))))->value();
         $inhabitantData["feedTime"] = (new Integer(strip_tags($request->request->get("feedTime"))))->value();
-        $inhabitantData["foodType"] = strip_tags($request->request->get("foodType"))->value();
+        $inhabitantData["foodType"] = strip_tags($request->request->get("foodType"));
         $inhabitantData["number"] = (new Integer(strip_tags($request->request->get("number"))))->value();
         $inhabitantData["description"] = strip_tags($request->request->get("description"));
         $inhabitantData["aquariumId"] = $idAquarium;
