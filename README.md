@@ -11,7 +11,7 @@ El siguiente proyecto es una aplicación de gestion de acuarios desarrollada com
 * Gestión de sus accesorios
 * Gestión de sus habitantes
 * Gestión de recordatorios
-* Control de metricas
+* Control de métricas
 * Gestión de usuarios de la plataforma
-* Mensajeria y envio masivo del boletin de noticias
-* Administración de soluciones para parametros altos y bajos
+* Mensajería y envío masivo del boletín de noticias
+* Administración de soluciones para parámetros altos y bajos
