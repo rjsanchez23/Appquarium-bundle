@@ -1,5 +1,5 @@
 ## Proyecto TFM
-*por Andrés Cavero, Iván Fernández y Ricardo Sánchez*
+*por Ricardo Sánchez*
 
 ------------------------------------------------------
 
